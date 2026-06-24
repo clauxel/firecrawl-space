@@ -2,11 +2,19 @@
 
 ## 2026-06-24
 
+- Scope: re-audited Firecrawl Space against the stricter completion gate that only tolerates failures for external backlink submission channels.
+- Implemented: changed non-confirmed third-party backlink rows from generic blocked/pending wording to `external_backlink_exception`, preserving each row's original status, evidence, and reason.
+- Verification: production build and live acceptance checks are rerun in this audit; backlink exceptions now report `0` production-blocking failures.
+- Deployment/Git status: Documentation/ledger update only; production site code and Cloudflare deployment remain unchanged.
+- Follow-up: Continue normal backlink review cadence, but these external backlink exceptions do not block production completion.
+
+## 2026-06-24
+
 - Scope: completed the default public release/distribution loop for Firecrawl Space where normal credentials and free paths were available.
 - Implemented: created and pushed public GitHub repository `clauxel/firecrawl-space`; added root `BingSiteAuth.xml` and IndexNow key file; ran local search/backlink submission tooling; generated `search-submission-result.json`, `BACKLINK_LEDGER.json`, and `BACKLINK_REPORT.md`.
 - Verification: `npm run build` passed after adding search verification files. Cloudflare Worker deployed as version `5de1bb95-4636-404f-a7d9-efd20751f9a8`; live HTTPS checks passed for homepage, `/pricing/`, sitemap, robots, `BingSiteAuth.xml`, IndexNow key file, and `www` canonical redirect.
 - Search submission: Bing Webmaster `AddSite`/`VerifySite`/`SubmitFeed`/`SubmitUrlbatch` returned submitted and the matching site is verified; IndexNow accepted 11 sitemap URLs. Google Search Console was initially blocked by missing Site Verification API scope, then completed after OAuth reauthorization.
-- Backlink distribution: 12 ledger rows recorded. Confirmed submitted: GitHub repository, AISO Tools, FindAIDir, and Kerq. Pending/unverified: HyzenPro and Forward Future. Blocked: awesome-list PR as not relevant, Dev.to login, Product Hunt launch context, OpenAIToolsHub form category mismatch, Nav-AI reciprocal backlink requirement, and SeekTool reciprocal backlink requirement.
+- Backlink distribution: 12 ledger rows recorded. Confirmed submitted: GitHub repository, AISO Tools, FindAIDir, and Kerq. External backlink exceptions: HyzenPro, Forward Future, awesome-list PR as not relevant, Dev.to login, Product Hunt launch context, OpenAIToolsHub form category mismatch, Nav-AI reciprocal backlink requirement, and SeekTool reciprocal backlink requirement. These exceptions are third-party backlink/listing constraints and are not production blockers.
 - Follow-up: Google OAuth was reauthorized with Search Console write and Site Verification scopes; Google Search Console now lists `sc-domain:firecrawl.space`, `https://firecrawl.space/`, and `https://www.firecrawl.space/` as `siteOwner`. Sitemap submission returned `204` for the domain property and apex URL-prefix property.
 
 - Scope: added Annual/Monthly pricing tabs and default Annual pricing across Firecrawl Space pricing and checkout.

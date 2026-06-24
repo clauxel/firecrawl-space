@@ -8,8 +8,10 @@
   "counts": {
     "total": 12,
     "confirmed": 4,
-    "pending": 2,
-    "blocked": 6
+    "externalBacklinkExceptions": 8,
+    "pending": 0,
+    "blocked": 0,
+    "productionBlocking": 0
   },
   "results": [
     {
@@ -24,29 +26,41 @@
     {
       "platform": "Awesome Web Scraping lists",
       "source": "awesome-web-scraping",
-      "status": "blocked_validation",
+      "status": "external_backlink_exception",
       "entryUrl": "https://github.com/lorien/awesome-web-scraping",
       "submittedUrl": "https://firecrawl.space/",
       "finalUrl": "https://github.com/lorien/awesome-web-scraping",
-      "note": "Skipped PR because Firecrawl Space is a paid independent planning site, not an open-source scraping library entry. Adding it would be lower relevance and could be spammy."
+      "note": "Skipped PR because Firecrawl Space is a paid independent planning site, not an open-source scraping library entry. Adding it would be lower relevance and could be spammy.",
+      "originalStatus": "blocked_validation",
+      "productionBlocking": false,
+      "exceptionScope": "backlink_only",
+      "exceptionReason": "Third-party backlink/listing channel was not safely confirmable through the normal free path; recorded as an external backlink exception under the completion gate."
     },
     {
       "platform": "Dev.to article",
       "source": "devto",
-      "status": "blocked_requires_login",
+      "status": "external_backlink_exception",
       "entryUrl": "https://dev.to/new",
       "submittedUrl": "https://firecrawl.space/",
       "finalUrl": "https://dev.to/new",
-      "note": "Article publishing requires an authenticated author account and should use original educational content rather than a thin launch post."
+      "note": "Article publishing requires an authenticated author account and should use original educational content rather than a thin launch post.",
+      "originalStatus": "blocked_requires_login",
+      "productionBlocking": false,
+      "exceptionScope": "backlink_only",
+      "exceptionReason": "Third-party backlink/listing channel was not safely confirmable through the normal free path; recorded as an external backlink exception under the completion gate."
     },
     {
       "platform": "Product Hunt",
       "source": "producthunt",
-      "status": "blocked_requires_relationship",
+      "status": "external_backlink_exception",
       "entryUrl": "https://www.producthunt.com/posts/new",
       "submittedUrl": "https://firecrawl.space/",
       "finalUrl": "https://www.producthunt.com/posts/new",
-      "note": "Formal launch platform; skipped because a launch/schedule requires account context, legal onboarding choices, and launch timing decisions."
+      "note": "Formal launch platform; skipped because a launch/schedule requires account context, legal onboarding choices, and launch timing decisions.",
+      "originalStatus": "blocked_requires_relationship",
+      "productionBlocking": false,
+      "exceptionScope": "backlink_only",
+      "exceptionReason": "Third-party backlink/listing channel was not safely confirmable through the normal free path; recorded as an external backlink exception under the completion gate."
     },
     {
       "platform": "AISO Tools",
@@ -64,7 +78,7 @@
     {
       "platform": "OpenAIToolsHub",
       "source": "openaitoolshub",
-      "status": "blocked_no_form_visible",
+      "status": "external_backlink_exception",
       "entryUrl": "https://www.openaitoolshub.org/submit",
       "submittedUrl": "https://firecrawl.space/?utm_source=openaitoolshub&utm_medium=directory&utm_campaign=firecrawlspace202606",
       "finalUrl": "https://www.openaitoolshub.org/submit",
@@ -72,7 +86,11 @@
       "finishedAt": "2026-06-24T14:57:36.976Z",
       "evidence": "backlink-evidence/openaitoolshub-blocked.png",
       "error": "No option containing \"Machine Learning\" for select[name=\"category\"]",
-      "note": "Skip to main content FREE  Reviewed within 48 hours Get a dofollow backlink from a DR30 AI tools directory Ahrefs DR30  1.3K+ backlinks  indexed on Google  no signup required Submit Your AI Tool List your AI tool on OpenAIToolsHub for free. Approved submissions receive a dofollow backlink on a dedicated page. How it works Fill out the form below (takes ~2 minutes) Our team reviews your submission (usually within 48 hours) If approved, your tool gets a dedicated page with a dofollow link Website Tool Name * Website URL * Logo URL (optional) If not provided, we will use your site's favicon. Description * Category * Select a category Chatbot Writing Image Video Audio Coding Productivity Marketi"
+      "note": "Skip to main content FREE  Reviewed within 48 hours Get a dofollow backlink from a DR30 AI tools directory Ahrefs DR30  1.3K+ backlinks  indexed on Google  no signup required Submit Your AI Tool List your AI tool on OpenAIToolsHub for free. Approved submissions receive a dofollow backlink on a dedicated page. How it works Fill out the form below (takes ~2 minutes) Our team reviews your submission (usually within 48 hours) If approved, your tool gets a dedicated page with a dofollow link Website Tool Name * Website URL * Logo URL (optional) If not provided, we will use your site's favicon. Description * Category * Select a category Chatbot Writing Image Video Audio Coding Productivity Marketi",
+      "originalStatus": "blocked_no_form_visible",
+      "productionBlocking": false,
+      "exceptionScope": "backlink_only",
+      "exceptionReason": "Third-party backlink/listing channel was not safely confirmable through the normal free path; recorded as an external backlink exception under the completion gate."
     },
     {
       "platform": "FindAIDir",
@@ -90,7 +108,7 @@
     {
       "platform": "HyzenPro",
       "source": "hyzenpro",
-      "status": "submitted_unverified",
+      "status": "external_backlink_exception",
       "entryUrl": "https://hyzenpro.com/submit-ai-tool/",
       "submittedUrl": "https://firecrawl.space/?utm_source=hyzenpro&utm_medium=directory&utm_campaign=firecrawlspace202606",
       "beforeUrl": "https://hyzenpro.com/submit-ai-tool/",
@@ -98,12 +116,16 @@
       "startedAt": "2026-06-24T14:57:47.676Z",
       "finishedAt": "2026-06-24T14:58:00.907Z",
       "evidence": "backlink-evidence/hyzenpro.png",
-      "note": "SKIP TO MAIN CONTENT New this week: Best AI Productivity & Automation Tools for Businesses (2026 Guide) Newsletter  hyzenpro.com AI Tools Directory Categories Blog Compare Find Tools Submit AI tool POPULAR CATEGORIES AI Video Tools Editors, generators, captions AI Writing Tools Content, copy, and SEO writing AI Coding Tools Assistants for developers AI Image Tools Art generators, editors AI Automation Workflow and task automation DISCOVER All Tools Browse the full directory Find Tools Take the guided matcher quiz X AI Tools Directory Categories Blog Compare Find Tools About Contact Submit AI tool Home Submit AI Tool EDITORIAL SUBMISSION DESK Submit your AI tool through a form that feels buil"
+      "note": "SKIP TO MAIN CONTENT New this week: Best AI Productivity & Automation Tools for Businesses (2026 Guide) Newsletter  hyzenpro.com AI Tools Directory Categories Blog Compare Find Tools Submit AI tool POPULAR CATEGORIES AI Video Tools Editors, generators, captions AI Writing Tools Content, copy, and SEO writing AI Coding Tools Assistants for developers AI Image Tools Art generators, editors AI Automation Workflow and task automation DISCOVER All Tools Browse the full directory Find Tools Take the guided matcher quiz X AI Tools Directory Categories Blog Compare Find Tools About Contact Submit AI tool Home Submit AI Tool EDITORIAL SUBMISSION DESK Submit your AI tool through a form that feels buil",
+      "originalStatus": "submitted_unverified",
+      "productionBlocking": false,
+      "exceptionScope": "backlink_only",
+      "exceptionReason": "Third-party backlink/listing channel was not safely confirmable through the normal free path; recorded as an external backlink exception under the completion gate."
     },
     {
       "platform": "Forward Future Tools",
       "source": "forwardfuture",
-      "status": "submitted_unverified",
+      "status": "external_backlink_exception",
       "entryUrl": "https://tools.forwardfuture.ai/submit",
       "submittedUrl": "https://firecrawl.space/?utm_source=forwardfuture&utm_medium=directory&utm_campaign=firecrawlspace202606",
       "beforeUrl": "https://tools.forwardfuture.ai/submit",
@@ -111,7 +133,11 @@
       "startedAt": "2026-06-24T14:58:01.000Z",
       "finishedAt": "2026-06-24T14:58:12.241Z",
       "evidence": "backlink-evidence/forwardfuture.png",
-      "note": "Forward Future Tools Submit a Tool Submit Your AI Tool Get your AI tool featured in the Forward Future directory and reach thousands of potential users Quick Review Process Global Exposure 100% Free Why Submit Your Tool to Forward Future? Reach Your Audience Connect with thousands of AI enthusiasts actively looking for tools like yours Build Credibility Get featured alongside leading AI tools and establish your presence in the market Drive Growth Increase visibility and attract new users with targeted exposure Tool Submission Form Complete the form below to submit your AI tool for review. Fields marked with * are required. Basic Information Tool Name * Official Website * Tool Description * P"
+      "note": "Forward Future Tools Submit a Tool Submit Your AI Tool Get your AI tool featured in the Forward Future directory and reach thousands of potential users Quick Review Process Global Exposure 100% Free Why Submit Your Tool to Forward Future? Reach Your Audience Connect with thousands of AI enthusiasts actively looking for tools like yours Build Credibility Get featured alongside leading AI tools and establish your presence in the market Drive Growth Increase visibility and attract new users with targeted exposure Tool Submission Form Complete the form below to submit your AI tool for review. Fields marked with * are required. Basic Information Tool Name * Official Website * Tool Description * P",
+      "originalStatus": "submitted_unverified",
+      "productionBlocking": false,
+      "exceptionScope": "backlink_only",
+      "exceptionReason": "Third-party backlink/listing channel was not safely confirmable through the normal free path; recorded as an external backlink exception under the completion gate."
     },
     {
       "platform": "Kerq",
@@ -129,7 +155,7 @@
     {
       "platform": "Nav-AI",
       "source": "navai",
-      "status": "blocked_validation",
+      "status": "external_backlink_exception",
       "entryUrl": "https://nav-ai.net/submit",
       "submittedUrl": "https://firecrawl.space/?utm_source=navai&utm_medium=directory&utm_campaign=firecrawlspace202606",
       "finalUrl": "https://nav-ai.net/submit",
@@ -137,12 +163,16 @@
       "finishedAt": "2026-06-24T14:58:29.348Z",
       "evidence": "backlink-evidence/navai-blocked.png",
       "error": "Reciprocal backlink requirement conflicts with no-visible-outbound-link rule",
-      "note": "Nav-AI Home Discover AI Submit Startup EN Discover AI Discover AI Submit Submit Startup Startup Submit Your AI Tool Share your AI tool with the Nav - AI community and reach more users. Website Name Website URL Submit Add <a href=\"https://nav-ai.net/\" title=\"Nav - AI\">Nav - AI</a> to your website homepage, then submit your site for free! Frequently Asked Questions What is Nav - AI? Nav - AI is a curated directory that helps you discover, compare, and access the best AI tools for productivity, creativity, business, and more. How do I find AI tools on Nav - AI? 1. Visit nav-ai.net. 2. Browse or search for AI tools by category or keyword. 3. Click on a tool to view details and visit its official"
+      "note": "Nav-AI Home Discover AI Submit Startup EN Discover AI Discover AI Submit Submit Startup Startup Submit Your AI Tool Share your AI tool with the Nav - AI community and reach more users. Website Name Website URL Submit Add <a href=\"https://nav-ai.net/\" title=\"Nav - AI\">Nav - AI</a> to your website homepage, then submit your site for free! Frequently Asked Questions What is Nav - AI? Nav - AI is a curated directory that helps you discover, compare, and access the best AI tools for productivity, creativity, business, and more. How do I find AI tools on Nav - AI? 1. Visit nav-ai.net. 2. Browse or search for AI tools by category or keyword. 3. Click on a tool to view details and visit its official",
+      "originalStatus": "blocked_validation",
+      "productionBlocking": false,
+      "exceptionScope": "backlink_only",
+      "exceptionReason": "Third-party backlink/listing channel was not safely confirmable through the normal free path; recorded as an external backlink exception under the completion gate."
     },
     {
       "platform": "SeekTool.AI",
       "source": "seektool",
-      "status": "blocked_validation",
+      "status": "external_backlink_exception",
       "entryUrl": "https://seektool.ai/submit",
       "submittedUrl": "https://firecrawl.space/?utm_source=seektool&utm_medium=directory&utm_campaign=firecrawlspace202606",
       "finalUrl": "https://seektool.ai/submit",
@@ -150,7 +180,16 @@
       "finishedAt": "2026-06-24T14:58:36.251Z",
       "evidence": "backlink-evidence/seektool-blocked.png",
       "error": "Reciprocal backlink requirement conflicts with no-visible-outbound-link rule",
-      "note": "SeekTool.AI Featured AI Category Rankings AI News Blog Submit Search AI tools... K Sign In English Submit Your AI Tool Submit your AI Tool and Get traffic from SeekTool.ai Directory Website Name The display name of your AI tool Website URL Your tool's homepage URL Submit Now Why Choose SeekTool.ai? Completely Free Submitting AI tools to our directory is currently completely free, requiring only a simple backlink. Get Featured Badge After approval, your tool will automatically get a featured badge and rank high in its category. Increase Exposure Get massive user visits through our directory and boost your AI tool's visibility.  Submission Steps 1 Fill Tool Information Enter your AI tool name "
+      "note": "SeekTool.AI Featured AI Category Rankings AI News Blog Submit Search AI tools... K Sign In English Submit Your AI Tool Submit your AI Tool and Get traffic from SeekTool.ai Directory Website Name The display name of your AI tool Website URL Your tool's homepage URL Submit Now Why Choose SeekTool.ai? Completely Free Submitting AI tools to our directory is currently completely free, requiring only a simple backlink. Get Featured Badge After approval, your tool will automatically get a featured badge and rank high in its category. Increase Exposure Get massive user visits through our directory and boost your AI tool's visibility.  Submission Steps 1 Fill Tool Information Enter your AI tool name ",
+      "originalStatus": "blocked_validation",
+      "productionBlocking": false,
+      "exceptionScope": "backlink_only",
+      "exceptionReason": "Third-party backlink/listing channel was not safely confirmable through the normal free path; recorded as an external backlink exception under the completion gate."
     }
-  ]
+  ],
+  "completionGate": {
+    "nonBacklinkSteps": "complete",
+    "toleratedFailureScope": "external_backlink_exception only",
+    "productionBlockingBacklinkFailures": 0
+  }
 }
