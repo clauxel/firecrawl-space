@@ -12,6 +12,10 @@ APP_ORIGIN = "https://firecrawl.space"
 CANONICAL_HOST = "firecrawl.space"
 SITE_MODE = "independent_reference"
 
+[[kv_namespaces]]
+binding = "ANALYTICS_KV"
+id = "f2368daf5ba642388e8ebe6a4d93b3e6"
+
 [assets]
 directory = "./public"
 binding = "SITE_ASSETS"

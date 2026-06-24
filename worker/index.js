@@ -74,6 +74,7 @@ const POLAR_PRODUCT_ID_KEYS = {
 }
 const ACCESS_SECRET_KEYS = ['FIRECRAWL_SPACE_ACCESS_SECRET', 'ACCESS_SIGNING_SECRET']
 const ACCESS_TTL_SECONDS = 60 * 60 * 24 * 30
+const ANALYTICS_TTL_SECONDS = 60 * 60 * 24 * 90
 
 const ALT_HOSTS = new Set(['www.' + CONFIG.domain])
 
@@ -164,6 +165,78 @@ function amountFor(plan, billing) {
 
 function centsToUsd(cents) {
   return Number((cents / 100).toFixed(2))
+}
+
+function safeText(value, maxLength = 160) {
+  return String(value || '')
+    .replace(/[^\w:./?=&%#+@ -]/g, '')
+    .slice(0, maxLength)
+    .trim()
+}
+
+function hostFromUrl(value) {
+  try {
+    return new URL(String(value || '')).hostname.toLowerCase()
+  } catch {
+    return ''
+  }
+}
+
+function userAgentFamily(value) {
+  const text = String(value || '').toLowerCase()
+  if (!text) return ''
+  if (text.includes('chatgpt-user')) return 'chatgpt-user'
+  if (text.includes('perplexity')) return 'perplexity'
+  if (text.includes('claudebot') || text.includes('anthropic')) return 'anthropic'
+  if (text.includes('googlebot')) return 'googlebot'
+  if (text.includes('bingbot')) return 'bingbot'
+  if (text.includes('facebookexternalhit')) return 'facebook'
+  if (text.includes('twitterbot')) return 'x-twitter'
+  if (text.includes('slackbot')) return 'slack'
+  if (text.includes('chrome')) return 'chrome'
+  if (text.includes('safari')) return 'safari'
+  if (text.includes('firefox')) return 'firefox'
+  return 'other'
+}
+
+function aiReferralSource(referrerHost, userAgent) {
+  const text = `${referrerHost} ${String(userAgent || '').toLowerCase()}`
+  if (/chatgpt|openai/.test(text)) return 'openai-chatgpt'
+  if (/perplexity/.test(text)) return 'perplexity'
+  if (/gemini|bard\.google|google\.com\/search/.test(text)) return 'google-gemini-or-search'
+  if (/copilot|bing\.com|microsoft/.test(text)) return 'microsoft-copilot-or-bing'
+  if (/claude|anthropic/.test(text)) return 'anthropic-claude'
+  if (/phind/.test(text)) return 'phind'
+  return ''
+}
+
+function analyticsConfigured(env) {
+  return Boolean(env?.ANALYTICS_KV?.put || env?.ANALYTICS_EVENTS?.writeDataPoint)
+}
+
+async function writeAnalyticsEvent(env, event) {
+  const sinks = []
+  if (env?.ANALYTICS_EVENTS?.writeDataPoint) {
+    env.ANALYTICS_EVENTS.writeDataPoint({
+      indexes: [CONFIG.slug],
+      blobs: [
+        event.event,
+        event.path,
+        event.aiSource,
+        event.referrerHost,
+        event.planId,
+        event.billing,
+      ],
+      doubles: [event.timestamp],
+    })
+    sinks.push('analytics_engine')
+  }
+  if (env?.ANALYTICS_KV?.put) {
+    const key = `event:${event.day}:${event.timestamp}:${crypto.randomUUID()}`
+    await env.ANALYTICS_KV.put(key, JSON.stringify(event), { expirationTtl: ANALYTICS_TTL_SECONDS })
+    sinks.push('kv')
+  }
+  return sinks
 }
 
 function publicPlans() {
@@ -496,6 +569,68 @@ async function handleCheckout(request, env, requestUrl) {
   }
 }
 
+async function handleAnalytics(request, env, requestUrl) {
+  if (request.method !== 'POST') return jsonResponse({ ok: false, error: 'Method not allowed.' }, 405, request)
+
+  let body = {}
+  try {
+    body = await request.json()
+  } catch {
+    body = {}
+  }
+
+  const referrer = safeText(body.referrer || request.headers.get('Referer') || '', 360)
+  const referrerHost = hostFromUrl(referrer)
+  const userAgent = request.headers.get('User-Agent') || ''
+  const timestamp = Date.now()
+  const event = {
+    site: CONFIG.slug,
+    domain: CONFIG.domain,
+    timestamp,
+    day: new Date(timestamp).toISOString().slice(0, 10),
+    event: safeText(body.event || 'event', 80) || 'event',
+    path: safeText(body.path || requestUrl.pathname, 240) || '/',
+    target: safeText(body.target || '', 240),
+    product: safeText(body.product || CONFIG.slug, 80),
+    provider: safeText(body.provider || '', 40),
+    planId: safeText(body.planId || '', 40),
+    billing: safeText(body.billing || '', 24),
+    feature: safeText(body.feature || '', 80),
+    scale: safeText(body.scale || '', 40),
+    output: safeText(body.output || '', 40),
+    deployment: safeText(body.deployment || '', 40),
+    referrerHost,
+    aiSource: aiReferralSource(referrerHost, userAgent),
+    userAgentFamily: userAgentFamily(userAgent),
+    country: safeText(request.cf?.country || '', 8),
+  }
+
+  let sinks = []
+  try {
+    sinks = await writeAnalyticsEvent(env, event)
+  } catch {
+    return jsonResponse({ ok: false, stored: false, error: 'analytics storage failed' }, 500, request)
+  }
+
+  if (!sinks.length) {
+    return jsonResponse({
+      ok: true,
+      stored: false,
+      provider: 'firecrawl-space-analytics',
+      missing: ['ANALYTICS_KV or ANALYTICS_EVENTS'],
+      message: 'Analytics storage is not configured for this deployment.',
+    }, 202, request)
+  }
+
+  return jsonResponse({
+    ok: true,
+    stored: true,
+    provider: 'firecrawl-space-analytics',
+    sinks,
+    aiSource: event.aiSource,
+  }, 200, request)
+}
+
 function isLocalRequest(request) {
   const host = request?.headers?.get?.('Host') || ''
   const cf = request?.headers?.get?.('CF-Ray') || request?.headers?.get?.('CF-Connecting-IP')
@@ -613,6 +748,9 @@ async function runtime(url, env) {
     pricingPath: origin + '/pricing/',
     checkoutEndpoint: origin + '/api/checkout',
     accessEndpoint: origin + '/api/access',
+    analyticsEndpoint: origin + '/api/analytics',
+    analyticsConfigured: analyticsConfigured(env),
+    analyticsSignals: ['page_view', 'link_click', 'billing_toggle', 'polar_checkout_begin', 'pricing_required', 'planner_submit'],
     paymentProvider: 'polar',
     paymentConfigured: await polarPaymentConfigured(env),
     featureGateConfigured: Boolean(await accessSigningSecret(env)),
@@ -669,11 +807,7 @@ export async function handleRequest(request, env) {
   if (url.pathname === '/api/access') return handleAccess(request, env)
   if (url.pathname === '/api/checkout' || url.pathname === '/api/polar-checkout') return handleCheckout(request, env, url)
   if (url.pathname === '/api/polar/webhook') return jsonResponse({ ok: true, provider: 'polar' }, 200, request)
-  if (url.pathname === '/api/analytics') {
-    return request.method === 'POST'
-      ? jsonResponse({ ok: true, stored: false, reason: 'analytics sink not configured' }, 202, request)
-      : jsonResponse({ ok: false, error: 'Method not allowed.' }, 405, request)
-  }
+  if (url.pathname === '/api/analytics') return handleAnalytics(request, env, url)
   if (url.pathname === '/.well-known/firecrawl-space.json') {
     return jsonResponse({
       name: CONFIG.brand,

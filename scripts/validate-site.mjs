@@ -48,6 +48,7 @@ for (const file of required) {
 
 const files = await walk(root.pathname)
 const textFiles = files.filter((file) => /\.(html|txt|json|js|css|svg|webmanifest|xml)$/.test(file))
+const htmlFiles = textFiles.filter((file) => file.endsWith('.html'))
 for (const file of textFiles) {
   const text = await readFile(file, 'utf8')
   if (/[\u4e00-\u9fff]/.test(text)) throw new Error('Public file contains CJK text: ' + file)
@@ -62,6 +63,21 @@ for (const file of textFiles) {
   }
   if (/href=["']#planner["']|>Open planner<\/a>|Pricing path|isAccessibleForFree":true/i.test(text)) {
     throw new Error('Public file contains ungated planner or weak pricing wording: ' + file)
+  }
+}
+
+for (const file of htmlFiles) {
+  const text = await readFile(file, 'utf8')
+  const relative = path.relative(root.pathname, file)
+  const h1Count = (text.match(/<h1\b/gi) || []).length
+  if (h1Count !== 1) throw new Error('HTML page must have exactly one H1: ' + relative)
+  const canonical = text.match(/<link\s+rel=["']canonical["']\s+href=["']([^"']+)["']/i)?.[1]
+  const ogUrl = text.match(/<meta\s+property=["']og:url["']\s+content=["']([^"']+)["']/i)?.[1]
+  if (!canonical) throw new Error('HTML page missing canonical: ' + relative)
+  if (!ogUrl) throw new Error('HTML page missing og:url: ' + relative)
+  if (canonical !== ogUrl) throw new Error('HTML page canonical and og:url differ: ' + relative)
+  if (!text.includes('/app.js?v=20260625-firecrawl-space-analytics')) {
+    throw new Error('HTML page missing analytics script: ' + relative)
   }
 }
 
@@ -110,8 +126,13 @@ for (const needle of [
 }
 
 const appScript = await readFile(new URL('app.js', root), 'utf8')
-for (const needle of ['billing_toggle', 'setBillingMode', 'data-checkout-link-plan', 'checkoutBilling']) {
+for (const needle of ['page_view', 'billing_toggle', 'setBillingMode', 'data-checkout-link-plan', 'checkoutBilling']) {
   if (!appScript.includes(needle)) throw new Error('App script missing billing tab behavior: ' + needle)
+}
+
+const docs = await readFile(new URL('docs/index.html', root), 'utf8')
+for (const residue of ['<td>Official docs</td>', '<td>Official self-host guide</td>', '<td>API guide</td></tr>']) {
+  if (docs.includes(residue)) throw new Error('Docs page matrix CTA must stay in the Firecrawl Space funnel: ' + residue)
 }
 
 for (const page of ['firecrawl-api', 'self-host-firecrawl', 'firecrawl-alternatives', 'use-cases', 'pricing', 'checkout', 'docs']) {
@@ -154,10 +175,16 @@ const assetBinding = {
 }
 
 const local = 'http://127.0.0.1:8798'
-let response = await handleRequest(new Request(local + '/api/runtime'), { SITE_ASSETS: assetBinding })
+const analyticsPuts = []
+const analyticsKv = {
+  async put(key, value, options) {
+    analyticsPuts.push({ key, value, options })
+  },
+}
+let response = await handleRequest(new Request(local + '/api/runtime'), { SITE_ASSETS: assetBinding, ANALYTICS_KV: analyticsKv })
 if (response.status !== 200) throw new Error('/api/runtime did not return 200')
 const runtime = await response.json()
-if (!runtime.ok || runtime.product !== product.brand || !runtime.officialRepo || runtime.mode !== 'independent_unofficial_reference' || runtime.paymentProvider !== 'polar' || !runtime.pricing || runtime.plannerAccess !== 'paid_access_required' || !runtime.accessEndpoint) {
+if (!runtime.ok || runtime.product !== product.brand || !runtime.officialRepo || runtime.mode !== 'independent_unofficial_reference' || runtime.paymentProvider !== 'polar' || !runtime.pricing || runtime.plannerAccess !== 'paid_access_required' || !runtime.accessEndpoint || !runtime.analyticsConfigured) {
   throw new Error('runtime response is incomplete')
 }
 if (runtime.defaultBilling !== 'annual' ||
@@ -171,6 +198,16 @@ if (runtime.defaultBilling !== 'annual' ||
   runtime.pricing.enterprise?.annual?.displayMonthlyUsd !== 29.5 ||
   runtime.pricing.enterprise?.annual?.dueTodayUsd !== 354) {
   throw new Error('runtime pricing metadata is missing Annual/Monthly 50% discount values')
+}
+
+response = await handleRequest(new Request(local + '/api/analytics', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json', Referer: 'https://chatgpt.com/' },
+  body: JSON.stringify({ event: 'page_view', path: '/docs/', referrer: 'https://chatgpt.com/c/abc' }),
+}), { SITE_ASSETS: assetBinding, ANALYTICS_KV: analyticsKv })
+const analytics = await response.json()
+if (response.status !== 200 || analytics.stored !== true || !analytics.sinks?.includes('kv') || analytics.aiSource !== 'openai-chatgpt' || analyticsPuts.length !== 1) {
+  throw new Error('/api/analytics should store events and classify AI referrals')
 }
 
 response = await handleRequest(new Request(local + '/api/checkout', {
@@ -249,4 +286,4 @@ if (facts.relationship !== 'independent_unofficial_reference' || facts.upstream.
 response = await handleRequest(new Request(local + '/missing-page'), { SITE_ASSETS: assetBinding })
 if (response.status !== 404) throw new Error('unknown route should return 404')
 
-console.log('Validated ' + product.brand + ': ' + textFiles.length + ' public text files, ' + urlCount + ' sitemap URLs, independent pricing page, paid planner gate, runtime API, Polar checkout wiring, facts JSON, 404 handling, and hero image asset.')
+console.log('Validated ' + product.brand + ': ' + textFiles.length + ' public text files, ' + urlCount + ' sitemap URLs, independent pricing page, paid planner gate, runtime API, stored analytics, Polar checkout wiring, facts JSON, 404 handling, and hero image asset.')

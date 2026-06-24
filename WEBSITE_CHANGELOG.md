@@ -1,5 +1,14 @@
 # WEBSITE_CHANGELOG
 
+## 2026-06-25
+
+- Scope: fixed the remaining experience-audit gaps from the `/experience/` review.
+- Implemented: added a real `/api/analytics` storage path with KV/Analytics Engine support, page-view/link/checkout/planner/paid-gate event tracking, and AI/referral source classification; added the `ANALYTICS_KV` binding for production.
+- Implemented: updated source notes page-matrix CTA labels so commercial next actions stay in the Firecrawl Space pricing funnel, not upstream official docs.
+- Implemented: added canonical and Open Graph URL metadata to non-core public pages and loaded the analytics script on every public HTML page.
+- Verification: `npm run build` now enforces every HTML page has exactly one H1, canonical, `og:url`, the analytics script, no source-note CTA leakage, and stored analytics behavior.
+- Production deployment: Cloudflare Worker deployed as version `a6180524-6ace-4247-9108-316981010c52`; live checks passed for homepage, docs, pricing, privacy, terms, changelog, 404 body metadata, sitemap, robots, www redirect, runtime analytics configuration, `/api/analytics` stored KV event, unpaid planner `402`, and Polar checkout start.
+
 ## 2026-06-24
 
 - Scope: re-audited Firecrawl Space against the stricter completion gate that only tolerates failures for external backlink submission channels.

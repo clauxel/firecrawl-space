@@ -1,5 +1,12 @@
 (() => {
-  const data = JSON.parse(document.getElementById('product-data')?.textContent || '{}')
+  const data = {
+    slug: 'firecrawl-space',
+    brand: 'Firecrawl Space',
+    domain: 'firecrawl.space',
+    defaultPlanId: 'pro',
+    defaultBilling: 'annual',
+    ...JSON.parse(document.getElementById('product-data')?.textContent || '{}'),
+  }
 
   function postEvent(event, extra = {}) {
     fetch('/api/analytics', {
@@ -8,6 +15,8 @@
       body: JSON.stringify({ event, path: location.pathname, product: data.slug, ...extra }),
     }).catch(() => {})
   }
+
+  postEvent('page_view', { referrer: document.referrer || '' })
 
   function openCentered(url) {
     const width = Math.min(920, Math.max(520, Math.round(window.innerWidth * 0.72)))
