@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-24T14:53:02.948Z",
+  "generatedAt": "2026-06-24T15:24:07.294Z",
   "domain": "firecrawl.space",
   "siteUrl": "https://firecrawl.space/",
   "sitemapUrl": "https://firecrawl.space/sitemap.xml",
@@ -22,21 +22,30 @@
   },
   "gsc": {
     "property": "sc-domain:firecrawl.space",
+    "urlPrefixProperty": "https://firecrawl.space/",
     "sitemapUrl": "https://firecrawl.space/sitemap.xml",
-    "status": "blocked_validation",
-    "matchingPropertiesBefore": [],
-    "addSiteStatus": 204,
-    "verification": {
-      "status": "blocked_validation",
-      "reason": "site_verification_token_failed:403"
-    },
-    "matchingPropertiesAfterVerify": [
+    "status": "submitted",
+    "matchingPropertiesAfter": [
       {
         "siteUrl": "sc-domain:firecrawl.space",
-        "permissionLevel": "siteUnverifiedUser"
+        "permissionLevel": "siteOwner"
+      },
+      {
+        "siteUrl": "https://firecrawl.space/",
+        "permissionLevel": "siteOwner"
+      },
+      {
+        "siteUrl": "https://www.firecrawl.space/",
+        "permissionLevel": "siteOwner"
       }
     ],
-    "sitemapStatus": "skipped_not_verified"
+    "verification": {
+      "status": "submitted",
+      "method": "DNS_TXT",
+      "dnsTxtAction": "created_or_updated"
+    },
+    "sitemapStatus": "ok:204",
+    "notes": "Google Search Console ownership verified after reauthorization with Site Verification scope; sitemap submitted on the domain property and apex URL-prefix property. www property exists as owner; apex sitemap submission there returned expected outside-property processing rejection and is not needed."
   },
   "bing": {
     "siteUrl": "https://firecrawl.space/",

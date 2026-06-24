@@ -48,7 +48,7 @@ Production launch status:
 ## Search And Distribution
 
 - Public repository: https://github.com/clauxel/firecrawl-space
+- Google Search Console: `sc-domain:firecrawl.space` and apex URL-prefix properties verified as `siteOwner`; sitemap submitted.
 - Bing Webmaster: site verified; sitemap and 11 URL batch submitted.
 - IndexNow: 11 sitemap URLs submitted.
-- Google Search Console: domain property was added, but sitemap submission is blocked until the Google OAuth credential has Site Verification API scope and the property can be verified.
 - Backlink ledger: `BACKLINK_LEDGER.json` and `BACKLINK_REPORT.md`.
