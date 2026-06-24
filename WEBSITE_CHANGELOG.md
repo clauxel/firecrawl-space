@@ -2,6 +2,10 @@
 
 ## 2026-06-25
 
+- Scope: migrated website analytics storage from KV to Cloudflare D1.
+- Implemented: replaced the `ANALYTICS_KV` binding with `ANALYTICS_DB`, created the `firecrawl-space-analytics` D1 binding, and made `/api/analytics` return `stored:true` only after a D1 insert succeeds.
+- Verification: local validation now requires `/api/analytics` to write a D1 event and report `sinks:["d1"]`; production verification must POST a live event and query D1 for that event before this migration is considered complete.
+
 - Scope: fixed the remaining experience-audit gaps from the `/experience/` review.
 - Implemented: added a real `/api/analytics` storage path with KV/Analytics Engine support, page-view/link/checkout/planner/paid-gate event tracking, and AI/referral source classification; added the `ANALYTICS_KV` binding for production.
 - Implemented: updated source notes page-matrix CTA labels so commercial next actions stay in the Firecrawl Space pricing funnel, not upstream official docs.

@@ -175,13 +175,28 @@ const assetBinding = {
 }
 
 const local = 'http://127.0.0.1:8798'
-const analyticsPuts = []
-const analyticsKv = {
-  async put(key, value, options) {
-    analyticsPuts.push({ key, value, options })
+const analyticsRows = []
+const analyticsDb = {
+  prepare(sql) {
+    const statement = {
+      sql,
+      values: [],
+      bind(...values) {
+        statement.values = values
+        return statement
+      },
+      async run() {
+        if (/INSERT INTO analytics_events/i.test(sql)) analyticsRows.push({ sql, values: statement.values })
+        return { success: true }
+      },
+    }
+    return statement
+  },
+  async batch(statements) {
+    return statements.map(() => ({ success: true }))
   },
 }
-let response = await handleRequest(new Request(local + '/api/runtime'), { SITE_ASSETS: assetBinding, ANALYTICS_KV: analyticsKv })
+let response = await handleRequest(new Request(local + '/api/runtime'), { SITE_ASSETS: assetBinding, ANALYTICS_DB: analyticsDb })
 if (response.status !== 200) throw new Error('/api/runtime did not return 200')
 const runtime = await response.json()
 if (!runtime.ok || runtime.product !== product.brand || !runtime.officialRepo || runtime.mode !== 'independent_unofficial_reference' || runtime.paymentProvider !== 'polar' || !runtime.pricing || runtime.plannerAccess !== 'paid_access_required' || !runtime.accessEndpoint || !runtime.analyticsConfigured) {
@@ -204,10 +219,10 @@ response = await handleRequest(new Request(local + '/api/analytics', {
   method: 'POST',
   headers: { 'Content-Type': 'application/json', Referer: 'https://chatgpt.com/' },
   body: JSON.stringify({ event: 'page_view', path: '/docs/', referrer: 'https://chatgpt.com/c/abc' }),
-}), { SITE_ASSETS: assetBinding, ANALYTICS_KV: analyticsKv })
+}), { SITE_ASSETS: assetBinding, ANALYTICS_DB: analyticsDb })
 const analytics = await response.json()
-if (response.status !== 200 || analytics.stored !== true || !analytics.sinks?.includes('kv') || analytics.aiSource !== 'openai-chatgpt' || analyticsPuts.length !== 1) {
-  throw new Error('/api/analytics should store events and classify AI referrals')
+if (response.status !== 200 || analytics.stored !== true || !analytics.sinks?.includes('d1') || analytics.aiSource !== 'openai-chatgpt' || analyticsRows.length !== 1) {
+  throw new Error('/api/analytics should store D1 events and classify AI referrals')
 }
 
 response = await handleRequest(new Request(local + '/api/checkout', {

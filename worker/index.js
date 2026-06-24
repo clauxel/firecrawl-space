@@ -74,9 +74,9 @@ const POLAR_PRODUCT_ID_KEYS = {
 }
 const ACCESS_SECRET_KEYS = ['FIRECRAWL_SPACE_ACCESS_SECRET', 'ACCESS_SIGNING_SECRET']
 const ACCESS_TTL_SECONDS = 60 * 60 * 24 * 30
-const ANALYTICS_TTL_SECONDS = 60 * 60 * 24 * 90
 
 const ALT_HOSTS = new Set(['www.' + CONFIG.domain])
+let analyticsSchemaReady = false
 
 function securityHeaders(request) {
   const headers = new Headers({
@@ -211,11 +211,77 @@ function aiReferralSource(referrerHost, userAgent) {
 }
 
 function analyticsConfigured(env) {
-  return Boolean(env?.ANALYTICS_KV?.put || env?.ANALYTICS_EVENTS?.writeDataPoint)
+  return Boolean(env?.ANALYTICS_DB?.prepare)
+}
+
+async function ensureAnalyticsSchema(env) {
+  if (analyticsSchemaReady || !env?.ANALYTICS_DB?.prepare) return
+  await env.ANALYTICS_DB.batch([
+    env.ANALYTICS_DB.prepare(`CREATE TABLE IF NOT EXISTS analytics_events (
+      id TEXT PRIMARY KEY,
+      site TEXT NOT NULL,
+      domain TEXT NOT NULL,
+      timestamp_ms INTEGER NOT NULL,
+      day TEXT NOT NULL,
+      event TEXT NOT NULL,
+      path TEXT NOT NULL,
+      target TEXT,
+      product TEXT,
+      provider TEXT,
+      plan_id TEXT,
+      billing TEXT,
+      feature TEXT,
+      scale TEXT,
+      output TEXT,
+      deployment TEXT,
+      referrer_host TEXT,
+      ai_source TEXT,
+      user_agent_family TEXT,
+      country TEXT,
+      raw_json TEXT NOT NULL,
+      created_at TEXT NOT NULL
+    )`),
+    env.ANALYTICS_DB.prepare('CREATE INDEX IF NOT EXISTS idx_analytics_events_site_day ON analytics_events (site, day)'),
+    env.ANALYTICS_DB.prepare('CREATE INDEX IF NOT EXISTS idx_analytics_events_event_day ON analytics_events (event, day)'),
+    env.ANALYTICS_DB.prepare('CREATE INDEX IF NOT EXISTS idx_analytics_events_ai_source ON analytics_events (ai_source)'),
+  ])
+  analyticsSchemaReady = true
 }
 
 async function writeAnalyticsEvent(env, event) {
   const sinks = []
+  if (env?.ANALYTICS_DB?.prepare) {
+    await ensureAnalyticsSchema(env)
+    await env.ANALYTICS_DB.prepare(`INSERT INTO analytics_events (
+      id, site, domain, timestamp_ms, day, event, path, target, product, provider,
+      plan_id, billing, feature, scale, output, deployment, referrer_host,
+      ai_source, user_agent_family, country, raw_json, created_at
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`).bind(
+      crypto.randomUUID(),
+      event.site,
+      event.domain,
+      event.timestamp,
+      event.day,
+      event.event,
+      event.path,
+      event.target,
+      event.product,
+      event.provider,
+      event.planId,
+      event.billing,
+      event.feature,
+      event.scale,
+      event.output,
+      event.deployment,
+      event.referrerHost,
+      event.aiSource,
+      event.userAgentFamily,
+      event.country,
+      JSON.stringify(event),
+      new Date(event.timestamp).toISOString(),
+    ).run()
+    sinks.push('d1')
+  }
   if (env?.ANALYTICS_EVENTS?.writeDataPoint) {
     env.ANALYTICS_EVENTS.writeDataPoint({
       indexes: [CONFIG.slug],
@@ -230,11 +296,6 @@ async function writeAnalyticsEvent(env, event) {
       doubles: [event.timestamp],
     })
     sinks.push('analytics_engine')
-  }
-  if (env?.ANALYTICS_KV?.put) {
-    const key = `event:${event.day}:${event.timestamp}:${crypto.randomUUID()}`
-    await env.ANALYTICS_KV.put(key, JSON.stringify(event), { expirationTtl: ANALYTICS_TTL_SECONDS })
-    sinks.push('kv')
   }
   return sinks
 }
@@ -617,8 +678,8 @@ async function handleAnalytics(request, env, requestUrl) {
       ok: true,
       stored: false,
       provider: 'firecrawl-space-analytics',
-      missing: ['ANALYTICS_KV or ANALYTICS_EVENTS'],
-      message: 'Analytics storage is not configured for this deployment.',
+      missing: ['ANALYTICS_DB'],
+      message: 'Cloudflare D1 analytics storage is not configured for this deployment.',
     }, 202, request)
   }
 
