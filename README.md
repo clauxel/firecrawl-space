@@ -17,6 +17,8 @@ The site helps developers choose between Firecrawl search, scrape, crawl, map, b
 npm run build
 npm run preview
 npm run dev
+node scripts/submit-search-indexing.mjs
+NODE_PATH=/path/to/node_modules node scripts/submit-backlinks.cjs
 ```
 
 `npm run build` runs the project validation script. `npm run preview` starts a small local Node preview server on `127.0.0.1:8798`.
@@ -32,6 +34,7 @@ npm run dev
 - `/api/access` - Polar checkout return verification and paid planner access token issuance
 - `/docs/` - evidence, source links, and page matrix
 - `/privacy/`, `/terms/`, `/changelog/`, `/llms.txt`
+- `/BingSiteAuth.xml` and `/590a3ab02487cffe4cfd55b0df769f65.txt` - search-engine verification files
 
 ## Deployment
 
@@ -43,3 +46,11 @@ Production launch status:
 - Apex HTTPS and `www` canonical redirect have passed live verification.
 - Sitemap, robots, `llms.txt`, facts JSON, runtime API, pricing page, checkout start, unpaid planner gate, and 404 handling have passed live verification.
 - Polar checkout is configured through Cloudflare Worker secrets. Secret values are never stored in this repository.
+
+## Search And Distribution
+
+- Public repository: https://github.com/clauxel/firecrawl-space
+- Bing Webmaster: site verified; sitemap and 11 URL batch submitted.
+- IndexNow: 11 sitemap URLs submitted.
+- Google Search Console: domain property was added, but sitemap submission is blocked until the Google OAuth credential has Site Verification API scope and the property can be verified.
+- Backlink ledger: `BACKLINK_LEDGER.json` and `BACKLINK_REPORT.md`.

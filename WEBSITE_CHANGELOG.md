@@ -2,6 +2,12 @@
 
 ## 2026-06-24
 
+- Scope: completed the default public release/distribution loop for Firecrawl Space where normal credentials and free paths were available.
+- Implemented: created and pushed public GitHub repository `clauxel/firecrawl-space`; added root `BingSiteAuth.xml` and IndexNow key file; added search submission and backlink submission scripts; generated `search-submission-result.json`, `BACKLINK_LEDGER.json`, and `BACKLINK_REPORT.md`.
+- Verification: `npm run build` passed after adding search verification files. Cloudflare Worker deployed as version `5de1bb95-4636-404f-a7d9-efd20751f9a8`; live HTTPS checks passed for homepage, `/pricing/`, sitemap, robots, `BingSiteAuth.xml`, IndexNow key file, and `www` canonical redirect.
+- Search submission: Bing Webmaster `AddSite`/`VerifySite`/`SubmitFeed`/`SubmitUrlbatch` returned submitted and the matching site is verified; IndexNow accepted 11 sitemap URLs. Google Search Console domain property was added, but sitemap submission is blocked because the current OAuth token lacks Site Verification API scope and the property remains `siteUnverifiedUser`.
+- Backlink distribution: 12 ledger rows recorded. Confirmed submitted: GitHub repository, AISO Tools, FindAIDir, and Kerq. Pending/unverified: HyzenPro and Forward Future. Blocked: awesome-list PR as not relevant, Dev.to login, Product Hunt launch context, OpenAIToolsHub form category mismatch, Nav-AI reciprocal backlink requirement, and SeekTool reciprocal backlink requirement.
+
 - Scope: added Annual/Monthly pricing tabs and default Annual pricing across Firecrawl Space pricing and checkout.
 - Implemented: pricing and checkout pages now use a segmented Annual/Monthly control, Annual is selected by default, Annual is 50% cheaper than Monthly, due-today totals update per plan, and checkout buttons keep the selected `billing` value.
 - Pricing rule: Monthly base prices are Starter `$9/mo`, Pro `$29/mo`, and Enterprise `$59/mo`; Annual displays Starter `$4.50/mo billed yearly` with `$54` due today, Pro `$14.50/mo billed yearly` with `$174` due today, and Enterprise `$29.50/mo billed yearly` with `$354` due today. Payments remain one-time and do not automatically renew.
@@ -25,4 +31,4 @@
 - Verification: `npm run build` passed; local preview, desktop/mobile Chrome screenshots, API guide screenshot, planner API, runtime API, facts JSON, core page HTTP checks, sitemap/robots/llms, and 404 handling passed.
 - Production launch: Cloudflare Worker deployed with `firecrawl.space/*`, `www.firecrawl.space/*`, and workers.dev triggers. Cloudflare zone is active; Spaceship nameservers point to Cloudflare; proxied apex/www DNS records are live.
 - Production verification: direct HTTPS checks passed for apex, www canonical redirect, sitemap, robots, llms, facts JSON, runtime API, and 404; no Spaceship parking signals were present. `workers.dev` returned 200 through the default network path.
-- Remaining external actions: GitHub repo creation/push, GSC/Bing sitemap submission, and backlink/community submissions remain pending explicit authorization.
+- External action status was updated later on 2026-06-24: GitHub, Bing Webmaster, IndexNow, and backlink ledger work were executed; Google Search Console remains blocked by missing Site Verification API scope.

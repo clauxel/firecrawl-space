@@ -1,0 +1,76 @@
+{
+  "generatedAt": "2026-06-24T14:53:02.948Z",
+  "domain": "firecrawl.space",
+  "siteUrl": "https://firecrawl.space/",
+  "sitemapUrl": "https://firecrawl.space/sitemap.xml",
+  "sitemap": {
+    "status": "live",
+    "urlCount": 11,
+    "submittedUrls": [
+      "https://firecrawl.space/",
+      "https://firecrawl.space/firecrawl-api/",
+      "https://firecrawl.space/self-host-firecrawl/",
+      "https://firecrawl.space/firecrawl-alternatives/",
+      "https://firecrawl.space/use-cases/",
+      "https://firecrawl.space/pricing/",
+      "https://firecrawl.space/checkout/",
+      "https://firecrawl.space/docs/",
+      "https://firecrawl.space/changelog/",
+      "https://firecrawl.space/privacy/",
+      "https://firecrawl.space/terms/"
+    ]
+  },
+  "gsc": {
+    "property": "sc-domain:firecrawl.space",
+    "sitemapUrl": "https://firecrawl.space/sitemap.xml",
+    "status": "blocked_validation",
+    "matchingPropertiesBefore": [],
+    "addSiteStatus": 204,
+    "verification": {
+      "status": "blocked_validation",
+      "reason": "site_verification_token_failed:403"
+    },
+    "matchingPropertiesAfterVerify": [
+      {
+        "siteUrl": "sc-domain:firecrawl.space",
+        "permissionLevel": "siteUnverifiedUser"
+      }
+    ],
+    "sitemapStatus": "skipped_not_verified"
+  },
+  "bing": {
+    "siteUrl": "https://firecrawl.space/",
+    "sitemapUrl": "https://firecrawl.space/sitemap.xml",
+    "bingAuthFile": "https://firecrawl.space/BingSiteAuth.xml",
+    "existedBefore": true,
+    "status": "submitted",
+    "addSite": {
+      "status": "already_submitted"
+    },
+    "verifySite": {
+      "status": "submitted",
+      "httpStatus": 200,
+      "error": ""
+    },
+    "submitFeed": {
+      "status": "submitted",
+      "httpStatus": 200,
+      "error": ""
+    },
+    "submitUrlBatch": {
+      "status": "submitted",
+      "httpStatus": 200,
+      "error": ""
+    },
+    "matchingSiteAfter": {
+      "url": "https://firecrawl.space/",
+      "isVerified": true
+    }
+  },
+  "indexNow": {
+    "status": "submitted",
+    "httpStatus": 200,
+    "keyLocation": "https://firecrawl.space/590a3ab02487cffe4cfd55b0df769f65.txt",
+    "urlCount": 11
+  }
+}

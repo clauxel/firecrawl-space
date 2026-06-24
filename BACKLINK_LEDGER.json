@@ -1,0 +1,156 @@
+{
+  "product": "Firecrawl Space",
+  "domain": "firecrawl.space",
+  "baseUrl": "https://firecrawl.space/",
+  "campaign": "firecrawlspace202606",
+  "generatedAt": "2026-06-24T14:58:36.309Z",
+  "sourceGuide": "saas-management-platform/public/tools/report-manager/generated/backlinks/ruflo-backlink-guide-2026-05-17.html",
+  "counts": {
+    "total": 12,
+    "confirmed": 4,
+    "pending": 2,
+    "blocked": 6
+  },
+  "results": [
+    {
+      "platform": "GitHub repository",
+      "source": "github",
+      "status": "submitted",
+      "entryUrl": "https://github.com/clauxel/firecrawl-space",
+      "submittedUrl": "https://firecrawl.space/",
+      "finalUrl": "https://github.com/clauxel/firecrawl-space",
+      "note": "Public repository created and pushed; README links the production site and explains the independent, unofficial product scope."
+    },
+    {
+      "platform": "Awesome Web Scraping lists",
+      "source": "awesome-web-scraping",
+      "status": "blocked_validation",
+      "entryUrl": "https://github.com/lorien/awesome-web-scraping",
+      "submittedUrl": "https://firecrawl.space/",
+      "finalUrl": "https://github.com/lorien/awesome-web-scraping",
+      "note": "Skipped PR because Firecrawl Space is a paid independent planning site, not an open-source scraping library entry. Adding it would be lower relevance and could be spammy."
+    },
+    {
+      "platform": "Dev.to article",
+      "source": "devto",
+      "status": "blocked_requires_login",
+      "entryUrl": "https://dev.to/new",
+      "submittedUrl": "https://firecrawl.space/",
+      "finalUrl": "https://dev.to/new",
+      "note": "Article publishing requires an authenticated author account and should use original educational content rather than a thin launch post."
+    },
+    {
+      "platform": "Product Hunt",
+      "source": "producthunt",
+      "status": "blocked_requires_relationship",
+      "entryUrl": "https://www.producthunt.com/posts/new",
+      "submittedUrl": "https://firecrawl.space/",
+      "finalUrl": "https://www.producthunt.com/posts/new",
+      "note": "Formal launch platform; skipped because a launch/schedule requires account context, legal onboarding choices, and launch timing decisions."
+    },
+    {
+      "platform": "AISO Tools",
+      "source": "aisotools",
+      "status": "submitted",
+      "entryUrl": "https://aisotools.com/submit",
+      "submittedUrl": "https://firecrawl.space/?utm_source=aisotools&utm_medium=directory&utm_campaign=firecrawlspace202606",
+      "beforeUrl": "https://aisotools.com/submit",
+      "finalUrl": "https://aisotools.com/submit",
+      "startedAt": "2026-06-24T14:57:16.761Z",
+      "finishedAt": "2026-06-24T14:57:30.900Z",
+      "evidence": "backlink-evidence/aisotools.png",
+      "note": "AISO Tools Categories New Blog Compare Advertise Free AI Audit Submit Tool BROWSE  New  Compare  All Categories  Saved CATEGORIES  Writing & Content 21  Image Generation 32  Video & Animation 60  Audio & Music 44  Chatbots & Assistants 29  Coding & Development 136  Marketing & SEO 53  Productivity 137  Design & UI/UX 52  Data & Analytics 29  Education & Research 25  Business & Finance 48  Healthcare & Wellness 18  Search & Knowledge 12  AI Agent Infrastructure 11  AI Security & Testing  3D & Spatial 12  SEO Tools 3  Real Estate 4  Data Extraction 1  ADHD & Focus Tools 9  Your tool is live! Thanks for submitting  your listing is published and indexable now. View your listing  A confirmation e"
+    },
+    {
+      "platform": "OpenAIToolsHub",
+      "source": "openaitoolshub",
+      "status": "blocked_no_form_visible",
+      "entryUrl": "https://www.openaitoolshub.org/submit",
+      "submittedUrl": "https://firecrawl.space/?utm_source=openaitoolshub&utm_medium=directory&utm_campaign=firecrawlspace202606",
+      "finalUrl": "https://www.openaitoolshub.org/submit",
+      "startedAt": "2026-06-24T14:57:30.982Z",
+      "finishedAt": "2026-06-24T14:57:36.976Z",
+      "evidence": "backlink-evidence/openaitoolshub-blocked.png",
+      "error": "No option containing \"Machine Learning\" for select[name=\"category\"]",
+      "note": "Skip to main content FREE  Reviewed within 48 hours Get a dofollow backlink from a DR30 AI tools directory Ahrefs DR30  1.3K+ backlinks  indexed on Google  no signup required Submit Your AI Tool List your AI tool on OpenAIToolsHub for free. Approved submissions receive a dofollow backlink on a dedicated page. How it works Fill out the form below (takes ~2 minutes) Our team reviews your submission (usually within 48 hours) If approved, your tool gets a dedicated page with a dofollow link Website Tool Name * Website URL * Logo URL (optional) If not provided, we will use your site's favicon. Description * Category * Select a category Chatbot Writing Image Video Audio Coding Productivity Marketi"
+    },
+    {
+      "platform": "FindAIDir",
+      "source": "findaidir",
+      "status": "submitted",
+      "entryUrl": "https://findaidir.com/submit-tool",
+      "submittedUrl": "https://firecrawl.space/?utm_source=findaidir&utm_medium=directory&utm_campaign=firecrawlspace202606",
+      "beforeUrl": "https://findaidir.com/submit-tool",
+      "finalUrl": "https://findaidir.com/submit-tool",
+      "startedAt": "2026-06-24T14:57:37.066Z",
+      "finishedAt": "2026-06-24T14:57:47.572Z",
+      "evidence": "backlink-evidence/findaidir.png",
+      "note": "FindAIDir Browse Tools List Your Tool Contact List your AI tool Submit your product details for review. Approved tools are added to the directory with profile pages and searchable tags. Submission form Tool name Website URL Category Tags (comma separated) Your name Your email Short description Company website Submit for review Submission received. We will review it. We review listings before publishing. Please submit accurate information. FindAIDir - AI tool discovery directory. Browse tools Contact us"
+    },
+    {
+      "platform": "HyzenPro",
+      "source": "hyzenpro",
+      "status": "submitted_unverified",
+      "entryUrl": "https://hyzenpro.com/submit-ai-tool/",
+      "submittedUrl": "https://firecrawl.space/?utm_source=hyzenpro&utm_medium=directory&utm_campaign=firecrawlspace202606",
+      "beforeUrl": "https://hyzenpro.com/submit-ai-tool/",
+      "finalUrl": "https://hyzenpro.com/submit-ai-tool/",
+      "startedAt": "2026-06-24T14:57:47.676Z",
+      "finishedAt": "2026-06-24T14:58:00.907Z",
+      "evidence": "backlink-evidence/hyzenpro.png",
+      "note": "SKIP TO MAIN CONTENT New this week: Best AI Productivity & Automation Tools for Businesses (2026 Guide) Newsletter  hyzenpro.com AI Tools Directory Categories Blog Compare Find Tools Submit AI tool POPULAR CATEGORIES AI Video Tools Editors, generators, captions AI Writing Tools Content, copy, and SEO writing AI Coding Tools Assistants for developers AI Image Tools Art generators, editors AI Automation Workflow and task automation DISCOVER All Tools Browse the full directory Find Tools Take the guided matcher quiz X AI Tools Directory Categories Blog Compare Find Tools About Contact Submit AI tool Home Submit AI Tool EDITORIAL SUBMISSION DESK Submit your AI tool through a form that feels buil"
+    },
+    {
+      "platform": "Forward Future Tools",
+      "source": "forwardfuture",
+      "status": "submitted_unverified",
+      "entryUrl": "https://tools.forwardfuture.ai/submit",
+      "submittedUrl": "https://firecrawl.space/?utm_source=forwardfuture&utm_medium=directory&utm_campaign=firecrawlspace202606",
+      "beforeUrl": "https://tools.forwardfuture.ai/submit",
+      "finalUrl": "https://tools.forwardfuture.ai/submit",
+      "startedAt": "2026-06-24T14:58:01.000Z",
+      "finishedAt": "2026-06-24T14:58:12.241Z",
+      "evidence": "backlink-evidence/forwardfuture.png",
+      "note": "Forward Future Tools Submit a Tool Submit Your AI Tool Get your AI tool featured in the Forward Future directory and reach thousands of potential users Quick Review Process Global Exposure 100% Free Why Submit Your Tool to Forward Future? Reach Your Audience Connect with thousands of AI enthusiasts actively looking for tools like yours Build Credibility Get featured alongside leading AI tools and establish your presence in the market Drive Growth Increase visibility and attract new users with targeted exposure Tool Submission Form Complete the form below to submit your AI tool for review. Fields marked with * are required. Basic Information Tool Name * Official Website * Tool Description * P"
+    },
+    {
+      "platform": "Kerq",
+      "source": "kerq",
+      "status": "submitted",
+      "entryUrl": "https://kerq.dev/submit",
+      "submittedUrl": "https://firecrawl.space/?utm_source=kerq&utm_medium=directory&utm_campaign=firecrawlspace202606",
+      "beforeUrl": "https://kerq.dev/submit",
+      "finalUrl": "https://kerq.dev/submit",
+      "startedAt": "2026-06-24T14:58:12.327Z",
+      "finishedAt": "2026-06-24T14:58:23.375Z",
+      "evidence": "backlink-evidence/kerq.png",
+      "note": "kerq. Search Scores Submit a Tool FAQ Docs Get Access Submit Your Tool Already listed in the Score Index? Claim it. Not listed yet? Submit it. Choose one path below  these are two separate options, not steps. Submit a new tool OR Claim your listing  Submitted tools go through a quick review before going live. Add an endpoint URL to get a real Kerq Score  evaluated across 7 dimensions including uptime, response time, error rate, consistency, throughput, performance trend, and recovery behavior. No payment required.  Tool Submitted Your tool is in the queue for review. Once approved, Kerq starts monitoring automatically and your Kerq Score will begin updating in real time.  Browse Score Index "
+    },
+    {
+      "platform": "Nav-AI",
+      "source": "navai",
+      "status": "blocked_validation",
+      "entryUrl": "https://nav-ai.net/submit",
+      "submittedUrl": "https://firecrawl.space/?utm_source=navai&utm_medium=directory&utm_campaign=firecrawlspace202606",
+      "finalUrl": "https://nav-ai.net/submit",
+      "startedAt": "2026-06-24T14:58:23.464Z",
+      "finishedAt": "2026-06-24T14:58:29.348Z",
+      "evidence": "backlink-evidence/navai-blocked.png",
+      "error": "Reciprocal backlink requirement conflicts with no-visible-outbound-link rule",
+      "note": "Nav-AI Home Discover AI Submit Startup EN Discover AI Discover AI Submit Submit Startup Startup Submit Your AI Tool Share your AI tool with the Nav - AI community and reach more users. Website Name Website URL Submit Add <a href=\"https://nav-ai.net/\" title=\"Nav - AI\">Nav - AI</a> to your website homepage, then submit your site for free! Frequently Asked Questions What is Nav - AI? Nav - AI is a curated directory that helps you discover, compare, and access the best AI tools for productivity, creativity, business, and more. How do I find AI tools on Nav - AI? 1. Visit nav-ai.net. 2. Browse or search for AI tools by category or keyword. 3. Click on a tool to view details and visit its official"
+    },
+    {
+      "platform": "SeekTool.AI",
+      "source": "seektool",
+      "status": "blocked_validation",
+      "entryUrl": "https://seektool.ai/submit",
+      "submittedUrl": "https://firecrawl.space/?utm_source=seektool&utm_medium=directory&utm_campaign=firecrawlspace202606",
+      "finalUrl": "https://seektool.ai/submit",
+      "startedAt": "2026-06-24T14:58:29.432Z",
+      "finishedAt": "2026-06-24T14:58:36.251Z",
+      "evidence": "backlink-evidence/seektool-blocked.png",
+      "error": "Reciprocal backlink requirement conflicts with no-visible-outbound-link rule",
+      "note": "SeekTool.AI Featured AI Category Rankings AI News Blog Submit Search AI tools... K Sign In English Submit Your AI Tool Submit your AI Tool and Get traffic from SeekTool.ai Directory Website Name The display name of your AI tool Website URL Your tool's homepage URL Submit Now Why Choose SeekTool.ai? Completely Free Submitting AI tools to our directory is currently completely free, requiring only a simple backlink. Get Featured Badge After approval, your tool will automatically get a featured badge and rank high in its category. Increase Exposure Get massive user visits through our directory and boost your AI tool's visibility.  Submission Steps 1 Fill Tool Information Enter your AI tool name "
+    }
+  ]
+}
