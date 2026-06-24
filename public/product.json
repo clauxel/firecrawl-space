@@ -1,0 +1,62 @@
+{
+  "slug": "firecrawl-space",
+  "brand": "Firecrawl Space",
+  "domain": "firecrawl.space",
+  "canonicalOrigin": "https://firecrawl.space",
+  "relationship": "independent_unofficial_reference",
+  "primarySeo": "Firecrawl implementation planner",
+  "secondarySeo": [
+    "Firecrawl API guide",
+    "Firecrawl self-host checklist",
+    "Firecrawl alternatives",
+    "AI web scraping API",
+    "web data extraction for agents"
+  ],
+  "supportEmail": "support@aigeamy.com",
+  "officialSite": "https://firecrawl.dev/",
+  "officialDocs": "https://docs.firecrawl.dev/",
+  "officialRepo": "https://github.com/firecrawl/firecrawl",
+  "license": "AGPL-3.0",
+  "updatedAt": "2026-06-24",
+  "capabilities": [
+    "endpoint_planner",
+    "api_guide",
+    "self_host_checklist",
+    "alternatives_matrix",
+    "use_case_mapping",
+    "source_notes",
+    "polar_checkout"
+  ],
+  "payment": {
+    "provider": "polar",
+    "pricingPath": "https://firecrawl.space/pricing/",
+    "checkoutPath": "https://firecrawl.space/checkout/",
+    "accessPath": "https://firecrawl.space/api/access",
+    "defaultPlanId": "pro",
+    "defaultBilling": "annual",
+    "billingTabs": [
+      "annual",
+      "monthly"
+    ],
+    "annualDiscountPercent": 50,
+    "plans": {
+      "starter": {
+        "monthlyUsd": 9,
+        "annualMonthlyEquivalentUsd": 4.5,
+        "annualDueTodayUsd": 54
+      },
+      "pro": {
+        "monthlyUsd": 29,
+        "annualMonthlyEquivalentUsd": 14.5,
+        "annualDueTodayUsd": 174
+      },
+      "enterprise": {
+        "monthlyUsd": 59,
+        "annualMonthlyEquivalentUsd": 29.5,
+        "annualDueTodayUsd": 354
+      }
+    },
+    "noAutomaticRenewal": true,
+    "featureGate": "pricing_and_paid_checkout_required"
+  }
+}

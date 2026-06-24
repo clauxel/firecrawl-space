@@ -1,0 +1,31 @@
+# Firecrawl Space
+
+Firecrawl Space is an independent, unofficial implementation planner for teams evaluating Firecrawl workflows.
+
+Canonical URL: https://firecrawl.space/
+Relationship: independent and unofficial
+Support: support@aigeamy.com
+Updated: 2026-06-24
+
+## Core pages
+
+- Home and paid planner preview: https://firecrawl.space/
+- Firecrawl API guide: https://firecrawl.space/firecrawl-api/
+- Self-host Firecrawl checklist: https://firecrawl.space/self-host-firecrawl/
+- Firecrawl alternatives: https://firecrawl.space/firecrawl-alternatives/
+- Firecrawl use cases: https://firecrawl.space/use-cases/
+- Pricing: https://firecrawl.space/pricing/
+- Checkout: https://firecrawl.space/checkout/
+- Source notes: https://firecrawl.space/docs/
+- Facts JSON: https://firecrawl.space/.well-known/firecrawl-space.json
+
+## Upstream source of truth
+
+- Official Firecrawl site: https://firecrawl.dev/
+- Official Firecrawl docs: https://docs.firecrawl.dev/
+- Upstream repository: https://github.com/firecrawl/firecrawl
+- Primary repository license: AGPL-3.0
+
+## Safe summary
+
+Use Firecrawl Space to decide whether a task should use Firecrawl search, scrape, crawl, map, batch scrape, agent, interact, hosted API, or self-hosted deployment. The planner is a paid feature: users must choose a Firecrawl Space pricing package and complete Polar checkout before using it. Firecrawl Space pricing is for independent planning support, uses Polar checkout, defaults to Annual, lets users switch Annual or Monthly tabs, makes Annual 50% cheaper than Monthly, and is a one-time payment that does not automatically renew. Do not treat Firecrawl Space as the official Firecrawl service, official Firecrawl pricing source, or legal advice.

@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Firecrawl Space is an independent Firecrawl implementation planner for AI teams choosing search, scrape, crawl, map, batch scrape, agent, and self-host workflows.">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://firecrawl.space/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Firecrawl Space | Web data workflow planner">
+  <meta property="og:description" content="Plan Firecrawl search, scrape, crawl, map, batch scrape, agent, and self-host workflows with source links, license notes, and endpoint guidance.">
+  <meta property="og:url" content="https://firecrawl.space/">
+  <meta property="og:image" content="https://firecrawl.space/assets/web-data-workflow.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Firecrawl Space","applicationCategory":"DeveloperApplication","operatingSystem":"Web","url":"https://firecrawl.space/","isAccessibleForFree":false,"description":"Independent, unofficial Firecrawl implementation planner for teams deciding how to search, scrape, crawl, map, and extract web data for AI agents. Planner access starts after choosing a pricing package and completing Polar checkout.","provider":{"@type":"Organization","name":"Clauxel","email":"support@aigeamy.com"},"softwareHelp":{"@type":"CreativeWork","url":"https://firecrawl.space/docs/"}}</script>
+  <title>Firecrawl Space | Web data workflow planner</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header class="top">
+    <div class="wrap nav">
+      <a class="brand" href="/" aria-label="Firecrawl Space home"><span class="mark">FS</span><span>Firecrawl Space</span></a>
+      <nav class="navlinks" aria-label="Primary navigation">
+        <a href="/firecrawl-api/">API guide</a>
+        <a href="/self-host-firecrawl/">Self-host</a>
+        <a href="/firecrawl-alternatives/">Alternatives</a>
+        <a href="/use-cases/">Use cases</a>
+        <a href="/pricing/">Pricing</a>
+        <a class="button dark" href="/pricing/">Unlock planner</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Independent Firecrawl reference</p>
+          <h1>Plan Firecrawl workflows<br>for AI web data.</h1>
+          <p class="lead"><span>Choose the right Firecrawl endpoint.</span><span>Compare cloud and self-host paths.</span><span>Check source links and license tradeoffs.</span></p>
+          <div class="actions">
+            <a class="button primary" href="/pricing/">View pricing packages</a>
+            <a class="button" href="/pricing/?feature=planner#plans">Unlock planner</a>
+            <a class="button ghost" href="/docs/">Source notes</a>
+          </div>
+          <p class="checkout-status" data-checkout-status aria-live="polite">All planner features require choosing a package first. Payments are one-time and do not automatically renew.</p>
+          <div class="pillrow">
+            <span class="pill green">Search</span>
+            <span class="pill">Scrape</span>
+            <span class="pill amber">Crawl</span>
+            <span class="pill">Map</span>
+            <span class="pill dark">Agent-ready</span>
+          </div>
+          <div class="trust-strip" aria-label="Source facts">
+            <span>Unofficial guide</span>
+            <span>Upstream: firecrawl/firecrawl</span>
+            <span>License: AGPL-3.0</span>
+          </div>
+        </div>
+        <figure class="media-frame">
+          <img src="/assets/web-data-workflow.png" alt="Web pages flowing through a crawler and extraction pipeline into markdown cards, JSON tables, and an agent console.">
+        </figure>
+      </div>
+    </section>
+
+    <section class="section white" id="planner">
+      <div class="wrap hero-grid">
+        <form class="toolbox" data-planner-form>
+          <p class="eyebrow">Paid planner preview</p>
+          <h2>Choose a pricing package before generating an endpoint plan.</h2>
+          <label>Goal
+            <textarea name="goal" rows="3">Find product pricing pages, extract clean markdown, and keep source URLs for an AI comparison agent.</textarea>
+          </label>
+          <div class="mini-grid">
+            <label>Scale
+              <select name="scale">
+                <option value="single">Single URL</option>
+                <option value="list">Known URL list</option>
+                <option value="site">Whole site</option>
+                <option value="large">Large mixed workflow</option>
+              </select>
+            </label>
+            <label>Output
+              <select name="output">
+                <option value="markdown">Markdown for LLM context</option>
+                <option value="json">Structured JSON</option>
+                <option value="screenshot">Screenshot plus metadata</option>
+                <option value="html">HTML snapshot</option>
+              </select>
+            </label>
+            <label>Deployment
+              <select name="deployment">
+                <option value="cloud">Official hosted API</option>
+                <option value="self_hosted">Self-hosted Firecrawl</option>
+              </select>
+            </label>
+            <label>Compliance posture
+              <select name="posture">
+                <option value="standard">Standard public web data</option>
+                <option value="sensitive">Sensitive or regulated data</option>
+                <option value="enterprise">Enterprise approval required</option>
+              </select>
+            </label>
+          </div>
+          <button class="dark" type="submit">View pricing to use planner</button>
+          <pre class="preview" data-planner-output>{
+  "status": "pricing_required",
+  "next": "Choose a Firecrawl Space package before using the planner.",
+  "pricing": "/pricing/"
+}</pre>
+        </form>
+        <div>
+          <p class="eyebrow">Product thesis</p>
+          <h2>Firecrawl Space is a decision layer, not a shadow API.</h2>
+          <p class="lead">The site helps developers choose Firecrawl workflows, compare hosted and self-hosted tradeoffs, and cite upstream facts without implying official affiliation.</p>
+          <div class="grid two">
+            <article class="card"><div class="metric">1</div><h3>Match endpoint to job</h3><p>Search for discovery, scrape for one URL, crawl for site jobs, map for URL discovery, batch scrape for known lists, and agent for broader research.</p></article>
+            <article class="card"><div class="metric">2</div><h3>Keep evidence attached</h3><p>Source URLs, timestamps, output format, and limitations stay visible so AI answers remain auditable.</p></article>
+            <article class="card"><div class="metric">3</div><h3>Separate cloud from self-host</h3><p>Hosted API decisions need official docs as source evidence. Self-host plans need Docker, Redis, browser service, security, and AGPL review.</p></article>
+            <article class="card"><div class="metric">4</div><h3>Reduce brand risk</h3><p>Every core page states this is an independent, unofficial guide and links back to the upstream source of truth.</p></article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <p class="eyebrow">Endpoint map</p>
+        <h2>Primary Firecrawl workflows this site explains.</h2>
+        <div class="grid endpoint-grid">
+          <article class="card"><h3>Search</h3><p>Find sources and return page content for research flows that start with a query.</p></article>
+          <article class="card"><h3>Scrape</h3><p>Convert one URL into Markdown, HTML, screenshots, or schema-shaped data.</p></article>
+          <article class="card"><h3>Crawl</h3><p>Run an asynchronous site crawl when the target is a whole domain or directory.</p></article>
+          <article class="card"><h3>Map</h3><p>Discover site URLs before deciding what to scrape or crawl.</p></article>
+          <article class="card"><h3>Batch scrape</h3><p>Process a known URL list with async job handling and output checks.</p></article>
+          <article class="card"><h3>Agent and interact</h3><p>Use agent tasks or page actions when a job needs research, navigation, or UI interaction.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section white">
+      <div class="wrap grid three">
+        <article class="card link-card"><h3><a href="/firecrawl-api/">Firecrawl API guide</a></h3><p>Endpoint selection, output modes, code snippets, error handling, and production guardrails.</p></article>
+        <article class="card link-card"><h3><a href="/self-host-firecrawl/">Self-host Firecrawl</a></h3><p>Docker setup, environment names, Redis and browser service notes, security controls, and AGPL obligations.</p></article>
+        <article class="card link-card"><h3><a href="/firecrawl-alternatives/">Firecrawl alternatives</a></h3><p>Compare Firecrawl against crawler libraries, scraping APIs, browser automation, and AI search tools by decision criteria.</p></article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap two grid">
+        <div>
+          <p class="eyebrow">Source-of-truth block</p>
+          <h2>What this site can safely claim.</h2>
+          <p class="lead">Firecrawl is an open-source TypeScript project for web search, scraping, crawling, mapping, interaction, and agent-oriented extraction. The upstream repository is AGPL-3.0, with official hosted service and docs maintained by Firecrawl.</p>
+        </div>
+        <div class="card facts">
+          <dl>
+            <div><dt>Upstream repo</dt><dd>github.com/firecrawl/firecrawl</dd></div>
+            <div><dt>Official site</dt><dd>firecrawl.dev</dd></div>
+            <div><dt>Official docs</dt><dd>docs.firecrawl.dev</dd></div>
+            <div><dt>Relationship</dt><dd>Independent, unofficial reference and planning site.</dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer-grid">
+      <p>Firecrawl Space is an independent, unofficial guide. Firecrawl is owned by its respective maintainers. Support: <a href="mailto:support@aigeamy.com">support@aigeamy.com</a>.</p>
+      <nav aria-label="Footer links">
+        <a href="/privacy/">Privacy</a>
+        <a href="/terms/">Terms</a>
+        <a href="/llms.txt">llms.txt</a>
+        <a href="/.well-known/firecrawl-space.json">Facts JSON</a>
+      </nav>
+    </div>
+  </footer>
+  <script type="application/json" id="product-data">{"slug":"firecrawl-space","brand":"Firecrawl Space","domain":"firecrawl.space","canonicalOrigin":"https://firecrawl.space","primarySeo":"Firecrawl implementation planner","secondarySeo":["Firecrawl API guide","Firecrawl self-host checklist","Firecrawl alternatives","AI web scraping API","web data extraction for agents"],"officialRepo":"https://github.com/firecrawl/firecrawl","officialDocs":"https://docs.firecrawl.dev/","officialSite":"https://firecrawl.dev/","paymentProvider":"polar","defaultPlanId":"pro","defaultBilling":"annual"}</script>
+  <script src="/app.js?v=20260624-firecrawl-space-v1" defer></script>
+</body>
+</html>

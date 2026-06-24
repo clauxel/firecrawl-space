@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Self-host Firecrawl checklist covering Docker, environment names, Redis, browser service, security controls, and AGPL-3.0 obligations.">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://firecrawl.space/self-host-firecrawl/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Self-host Firecrawl checklist | Firecrawl Space">
+  <meta property="og:description" content="Plan a self-hosted Firecrawl deployment with operational, security, and license checkpoints.">
+  <meta property="og:url" content="https://firecrawl.space/self-host-firecrawl/">
+  <meta property="og:image" content="https://firecrawl.space/assets/web-data-workflow.png">
+  <title>Self-host Firecrawl checklist | Firecrawl Space</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body class="simple-page">
+  <header class="top"><div class="wrap nav"><a class="brand" href="/"><span class="mark">FS</span><span>Firecrawl Space</span></a><nav class="navlinks"><a href="/firecrawl-api/">API guide</a><a href="/firecrawl-alternatives/">Alternatives</a><a href="/use-cases/">Use cases</a><a href="/pricing/">Pricing</a><a class="button dark" href="/docs/">Source notes</a></nav></div></header>
+  <main>
+    <section class="hero"><div class="wrap"><p class="eyebrow">Self-host Firecrawl</p><h1>Run self-hosted Firecrawl only when control beats managed reliability.</h1><p class="lead">Self-hosting is useful for internal security boundaries and custom services. It also adds maintenance, queue, browser, network, and AGPL review work.</p></div></section>
+    <section class="section white">
+      <div class="wrap grid">
+        <article class="card"><h3>Infrastructure</h3><ul><li>Docker or Kubernetes runtime.</li><li>API server, worker, Redis, PostgreSQL where configured, and browser service.</li><li>Health checks for API, queue, and browser extraction.</li></ul></article>
+        <article class="card"><h3>Environment names</h3><ul><li><code>PORT</code>, <code>HOST</code>, and authentication mode.</li><li>Optional AI provider variables for structured extraction.</li><li>Proxy, SearXNG, Supabase, and parser keys only when needed.</li></ul></article>
+        <article class="card"><h3>Security</h3><ul><li>Strong database credentials.</li><li>Private database ports.</li><li>Protected queue admin access.</li><li>Rate limits and outbound domain policy.</li></ul></article>
+      </div>
+    </section>
+    <section class="section">
+      <div class="wrap two grid">
+        <article class="card">
+          <h2>AGPL-3.0 checkpoint</h2>
+          <p>Firecrawl is primarily AGPL-3.0. If you modify and publicly run a network service based on AGPL-covered code, plan source availability, notices, license text, and legal review before launch.</p>
+        </article>
+        <article class="card">
+          <h2>Self-host limits to document</h2>
+          <p>The upstream self-host guide notes limitations around advanced managed capabilities. Public copy should not promise the same reliability, proxy coverage, or anti-blocking behavior as the official cloud unless you can prove it in your own deployment.</p>
+        </article>
+      </div>
+    </section>
+    <section class="section white">
+      <div class="wrap">
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Stage</th><th>Decision</th><th>Evidence to keep</th></tr></thead>
+            <tbody>
+              <tr><td>Local smoke</td><td>Can scrape a simple allowed URL.</td><td>Request, response, logs, queue status.</td></tr>
+              <tr><td>Browser path</td><td>Can handle JavaScript-heavy pages needed by the product.</td><td>Browser service logs, timeout settings, screenshot sample.</td></tr>
+              <tr><td>Scale path</td><td>Can crawl or batch scrape without queue collapse.</td><td>Limits, retry rules, memory and CPU observations.</td></tr>
+              <tr><td>Compliance path</td><td>Can enforce allowed domains, robots policy, and data boundaries.</td><td>Policy file, deny list, audit log sample.</td></tr>
+              <tr><td>License path</td><td>Can satisfy AGPL notices and source obligations.</td><td>License page, source link, modification changelog.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer"><div class="wrap footer-grid"><p>Independent Firecrawl implementation planner.</p><nav><a href="/">Home</a><a href="/docs/">Source notes</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a></nav></div></footer>
+</body>
+</html>

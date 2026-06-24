@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Start a Firecrawl Space Polar checkout for implementation planning support.">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://firecrawl.space/checkout/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Checkout | Firecrawl Space">
+  <meta property="og:description" content="Choose a one-time Firecrawl Space planning support checkout. Payments are processed by Polar and do not automatically renew.">
+  <meta property="og:url" content="https://firecrawl.space/checkout/">
+  <meta property="og:image" content="https://firecrawl.space/assets/web-data-workflow.png">
+  <title>Checkout | Firecrawl Space</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body class="simple-page">
+  <header class="top"><div class="wrap nav"><a class="brand" href="/"><span class="mark">FS</span><span>Firecrawl Space</span></a><nav class="navlinks"><a href="/pricing/">Pricing</a><a href="/docs/">Source notes</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a></nav></div></header>
+  <main>
+    <section class="hero"><div class="wrap"><p class="eyebrow">Checkout</p><h1>Start secure Polar checkout.</h1><p class="lead">Choose a Firecrawl Space package from the pricing flow to unlock paid planner access. Annual is selected by default and is 50% cheaper than monthly. This independent support does not include Firecrawl credits or official Firecrawl support.</p><div class="actions"><button class="primary" type="button" data-checkout-plan="pro" data-checkout-billing="annual">Checkout Pro annual</button><a class="button" href="/pricing/">View pricing</a></div><p class="checkout-status" data-checkout-status aria-live="polite">Payments are one-time and do not automatically renew.</p></div></section>
+    <section class="section white"><div class="wrap stack">
+      <div class="billing-toggle" role="tablist" aria-label="Billing period" data-billing-tabs data-default-billing="annual">
+        <button type="button" role="tab" aria-selected="true" data-billing-option="annual">Annual <span>Save 50%</span></button>
+        <button type="button" role="tab" aria-selected="false" data-billing-option="monthly">Monthly</button>
+      </div>
+      <div class="grid">
+        <article class="card pricing-card" data-plan-card data-plan-id="starter" data-plan-name="Starter" data-monthly-display="9" data-monthly-due="9" data-annual-display="4.50" data-annual-due="54"><h3>Starter</h3><p class="price"><strong data-plan-price>$4.50</strong><span data-plan-period>/mo billed yearly</span></p><p>One workflow planning report for a solo builder.</p><ul><li data-due-today>$54 due today</li><li>One-time payment, no automatic renewal</li></ul><button class="button primary" type="button" data-checkout-plan="starter" data-checkout-billing="annual">Checkout Starter annual</button></article>
+        <article class="card pricing-card" data-plan-card data-plan-id="pro" data-plan-name="Pro" data-monthly-display="29" data-monthly-due="29" data-annual-display="14.50" data-annual-due="174"><h3>Pro</h3><p class="price"><strong data-plan-price>$14.50</strong><span data-plan-period>/mo billed yearly</span></p><p>Reviewable workflow plan, source notes, and rollout checklist.</p><ul><li data-due-today>$174 due today</li><li>One-time payment, no automatic renewal</li></ul><button class="button primary" type="button" data-checkout-plan="pro" data-checkout-billing="annual">Checkout Pro annual</button></article>
+        <article class="card pricing-card" data-plan-card data-plan-id="enterprise" data-plan-name="Enterprise" data-monthly-display="59" data-monthly-due="59" data-annual-display="29.50" data-annual-due="354"><h3>Enterprise</h3><p class="price"><strong data-plan-price>$29.50</strong><span data-plan-period>/mo billed yearly</span></p><p>Governance notes, self-host review, and stakeholder-ready evidence.</p><ul><li data-due-today>$354 due today</li><li>One-time payment, no automatic renewal</li></ul><button class="button primary" type="button" data-checkout-plan="enterprise" data-checkout-billing="annual">Checkout Enterprise annual</button></article>
+      </div>
+    </div></section>
+  </main>
+  <footer class="footer"><div class="wrap footer-grid"><p>Independent Firecrawl implementation planner.</p><nav><a href="/">Home</a><a href="/pricing/">Pricing</a><a href="/llms.txt">llms.txt</a></nav></div></footer>
+  <script type="application/json" id="product-data">{"slug":"firecrawl-space","brand":"Firecrawl Space","domain":"firecrawl.space","canonicalOrigin":"https://firecrawl.space","defaultPlanId":"pro","defaultBilling":"annual"}</script>
+  <script src="/app.js?v=20260624-firecrawl-space-polar" defer></script>
+</body>
+</html>

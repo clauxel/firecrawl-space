@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Firecrawl API guide for choosing search, scrape, crawl, map, batch scrape, agent, and interact workflows for AI web data extraction.">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://firecrawl.space/firecrawl-api/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Firecrawl API guide | Firecrawl Space">
+  <meta property="og:description" content="Endpoint selection, output modes, production guardrails, and source links for Firecrawl API planning.">
+  <meta property="og:url" content="https://firecrawl.space/firecrawl-api/">
+  <meta property="og:image" content="https://firecrawl.space/assets/web-data-workflow.png">
+  <title>Firecrawl API guide | Firecrawl Space</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body class="simple-page">
+  <header class="top"><div class="wrap nav"><a class="brand" href="/"><span class="mark">FS</span><span>Firecrawl Space</span></a><nav class="navlinks"><a href="/self-host-firecrawl/">Self-host</a><a href="/firecrawl-alternatives/">Alternatives</a><a href="/use-cases/">Use cases</a><a href="/pricing/">Pricing</a><a class="button dark" href="/docs/">Source notes</a></nav></div></header>
+  <main>
+    <section class="hero"><div class="wrap"><p class="eyebrow">Firecrawl API guide</p><h1>Choose the endpoint that matches the web data job.</h1><p class="lead">Firecrawl Space is an independent guide. Use official Firecrawl docs as the canonical implementation source before shipping production code.</p></div></section>
+    <section class="section white">
+      <div class="wrap">
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Endpoint</th><th>Use when</th><th>Output fit</th><th>Production checks</th></tr></thead>
+            <tbody>
+              <tr><td>Search</td><td>The job starts with a query and needs sources.</td><td>Search results plus page content for agent context.</td><td>Log query, source URLs, ranking assumptions, and freshness.</td></tr>
+              <tr><td>Scrape</td><td>You know the URL and need clean content.</td><td>Markdown, HTML, screenshot, metadata, or structured JSON.</td><td>Validate allowed URLs, empty states, redirects, and schema drift.</td></tr>
+              <tr><td>Crawl</td><td>You need many pages from one site.</td><td>Async job with page-level documents.</td><td>Set limits, respect robots and policies, monitor job status, dedupe URLs.</td></tr>
+              <tr><td>Map</td><td>You need URL discovery before extraction.</td><td>Candidate links with titles and descriptions where available.</td><td>Filter admin, account, duplicate, and low-value paths before crawling.</td></tr>
+              <tr><td>Batch scrape</td><td>You already have a URL list.</td><td>Async extraction over known targets.</td><td>Track per-URL status, retry policy, and partial failure handling.</td></tr>
+              <tr><td>Agent</td><td>The task is research-like and does not start with a fixed URL.</td><td>Natural-language result with sources, optionally schema-shaped.</td><td>Keep source citations, model choice, prompt, and audit notes.</td></tr>
+              <tr><td>Interact</td><td>A page requires clicking, typing, scrolling, or waiting before extraction.</td><td>Post-action scrape result and live interaction context.</td><td>Avoid private areas, consent barriers, and fragile selectors.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="wrap two grid">
+        <article class="card">
+          <h2>Starter code shape</h2>
+          <pre class="code">import { Firecrawl } from 'firecrawl';
+
+const app = new Firecrawl({ apiKey: process.env.FIRECRAWL_API_KEY });
+const doc = await app.scrape('https://example.com', {
+  formats: ['markdown'],
+});
+
+console.log(doc.metadata?.sourceURL, doc.markdown?.slice(0, 500));</pre>
+        </article>
+        <article class="card">
+          <h2>Output design</h2>
+          <ul>
+            <li>Use Markdown for LLM context and citations.</li>
+            <li>Use schema JSON for repeatable extraction and tables.</li>
+            <li>Use screenshots when visual state is part of the evidence.</li>
+            <li>Keep source URL, crawl time, task prompt, and output format together.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+    <section class="section white">
+      <div class="wrap stack">
+        <div class="notice"><strong>Source notes:</strong> official API reference at docs.firecrawl.dev, GitHub repository github.com/firecrawl/firecrawl, and official hosted service firecrawl.dev. These are source facts, not outbound purchase links.</div>
+        <div class="notice warning"><strong>Brand note:</strong> Firecrawl Space is independent and unofficial. Do not present local examples as official Firecrawl pricing, uptime, or support commitments.</div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer"><div class="wrap footer-grid"><p>Independent Firecrawl implementation planner.</p><nav><a href="/">Home</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a><a href="/llms.txt">llms.txt</a></nav></div></footer>
+</body>
+</html>

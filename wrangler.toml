@@ -1,0 +1,21 @@
+name = "firecrawl-space"
+main = "worker/index.js"
+compatibility_date = "2026-06-24"
+workers_dev = true
+routes = [
+  { pattern = "firecrawl.space/*", zone_name = "firecrawl.space" },
+  { pattern = "www.firecrawl.space/*", zone_name = "firecrawl.space" }
+]
+
+[vars]
+APP_ORIGIN = "https://firecrawl.space"
+CANONICAL_HOST = "firecrawl.space"
+SITE_MODE = "independent_reference"
+
+[assets]
+directory = "./public"
+binding = "SITE_ASSETS"
+not_found_handling = "none"
+run_worker_first = [
+  "/*"
+]
