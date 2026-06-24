@@ -17,8 +17,6 @@ The site helps developers choose between Firecrawl search, scrape, crawl, map, b
 npm run build
 npm run preview
 npm run dev
-node scripts/submit-search-indexing.mjs
-NODE_PATH=/path/to/node_modules node scripts/submit-backlinks.cjs
 ```
 
 `npm run build` runs the project validation script. `npm run preview` starts a small local Node preview server on `127.0.0.1:8798`.
