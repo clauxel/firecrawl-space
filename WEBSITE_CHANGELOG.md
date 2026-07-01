@@ -55,3 +55,10 @@
 - Production launch: Cloudflare Worker deployed with `firecrawl.space/*`, `www.firecrawl.space/*`, and workers.dev triggers. Cloudflare zone is active; Spaceship nameservers point to Cloudflare; proxied apex/www DNS records are live.
 - Production verification: direct HTTPS checks passed for apex, www canonical redirect, sitemap, robots, llms, facts JSON, runtime API, and 404; no Spaceship parking signals were present. `workers.dev` returned 200 through the default network path.
 - External action status was updated later on 2026-06-24: GitHub, Google Search Console, Bing Webmaster, IndexNow, and backlink ledger work were executed.
+
+## 2026-07-01 - MiroFish contextual reference
+
+- Added one contextual related-resource link to MiroFish AI Simulator with UTM tracking for firecrawl.space.
+- Placement rule: secondary Resources/Source context when available, otherwise the homepage tail; no hero, nav, pricing, checkout, or primary CTA links were changed.
+- SEO safety: brand anchor only, one link per canonical site surface, visible editorial context, and no keyword-stuffed footer/sitewide block.
+- Verification pending: run the site build/deploy workflow and live link checks after all portfolio edits are applied.
